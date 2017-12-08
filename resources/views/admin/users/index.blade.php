@@ -3,6 +3,11 @@
 
 @section('content')
 
+
+    @if(Session::has('deleted_user_msg'))
+
+        <div class="bg-danger">{{session('deleted_user_msg')}}</div>
+    @endif
     <h1>Users</h1>
 
     <table class="table">
@@ -24,7 +29,8 @@
                 <tr>
                     <td>{{$user->id}}</td>
                     <td><a href="{{route('admin.users.edit', $user->id)}}">{{$user->name}}</a></td>
-                    <td><img width="100" src="{{$user->photo ? $user->photo->name : 'http://placehold.it/200x200'}}" alt="" class="img-responsive img-rounded"></td>
+                    <td><img width="100" src="{{$user->photo ? $user->photo->name : 'http://placehold.it/200x200'}}"
+                             alt="" class="img-responsive img-rounded"></td>
                     <td>{{$user->email}}</td>
                     <td>{{$user->role->name}}</td>
                     <td>{{$user->is_active ? 'Active' : 'Not active'}}</td>
