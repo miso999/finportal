@@ -29,7 +29,7 @@
                 <tr>
                     <td>{{$post->id}}</td>
                     <td>{{$post->user->name}}</td>
-                    <td>{{$post->category_id}}</td>
+                    <td>{{$post->category ? $post->category->name : 'Uncategorized'}}</td>
                     <td><img width="100" src="{{$post->photo ? $post->photo->name : 'http://placehold.it/200x200'}}"
                              alt="" class="img-responsive img-rounded"></td>
                     <td><a href="{{route('admin.posts.edit', $post->id)}}">{{$post->title}}</a></td>
