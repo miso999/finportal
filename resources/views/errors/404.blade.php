@@ -1,6 +1,5 @@
 @extends('layouts.app')
 
-@section('content)
-
+@section('content')
     <h1> No page found </h1>
 @stop
