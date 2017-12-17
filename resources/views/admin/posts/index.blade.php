@@ -38,7 +38,10 @@
                     <td>{{$post->updated_at->diffForHumans()}}</td>
                 </tr>
             @endforeach
+
+            {{$posts->render()}}
         @endif
+
         </tbody>
     </table>
 

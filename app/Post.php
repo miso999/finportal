@@ -3,9 +3,11 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Cviebrock\EloquentSluggable\Sluggable;
 
 class Post extends Model
 {
+    use Sluggable;
     protected $fillable = ['category_id', 'photo_id', 'title', 'body'];
 
     public function user()
@@ -26,5 +28,13 @@ class Post extends Model
     public function comments()
     {
         return $this->hasMany('App\Comment');
+    }
+    public function sluggable()
+    {
+        return [
+            'slug' => [
+                'source' => 'title'
+            ]
+        ];
     }
 }

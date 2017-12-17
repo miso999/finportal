@@ -23,4 +23,9 @@ class Comment extends Model
     {
         return $this->belongsTo('App\User');
     }
+
+    public function postSlug()
+    {
+        return Post::findOrFail($this->post_id)->slug;
+    }
 }

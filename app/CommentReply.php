@@ -24,5 +24,8 @@ class CommentReply extends Model
         return $this->belongsTo('App\User');
     }
 
-
+    public function postSlug()
+    {
+        return $this->comment->postSlug();
+    }
 }

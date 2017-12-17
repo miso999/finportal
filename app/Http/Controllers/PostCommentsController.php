@@ -19,9 +19,21 @@ class PostCommentsController extends Controller
      */
     public function index()
     {
+        $collection = collect();
         $comments = Comment::all();
         $replies = CommentReply::all();
-        $comments = $comments->merge($replies)->sortBy('created_at')->reverse();
+
+        foreach ($comments as $comment) {
+            $collection->push($comment);
+        }
+
+        foreach ($replies as $reply) {
+            $collection->push($reply);
+        }
+//        $comments = $comments->merge($replies)->sortBy('created_at')->reverse();
+        $comments = $collection->sortBy('created_at')->reverse();
+
+//        return $collection;
         return view('admin.comments.index', compact('comments'));
     }
 
